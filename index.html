@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addis Web Developer</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8S07YD102"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-N8S07YD102');
+</script>
+
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+/* =========================
+   RESET & BASE
+========================= */
+* { box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8ff;
+  color: #172033;
+  line-height: 1.7;
+  animation: pageFade 1s ease-in-out;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(8, 47, 107, 0.97);
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  color: #ffcc80;
+  transform: translateY(-2px);
+}
+
+.language-btn {
+  border: none;
+  background: white;
+  color: #082f6b;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.language-btn:hover {
+  transform: scale(1.05);
+  background: #eaf4ff;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  color: white;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(66,165,245,0.35), transparent 30%),
+    radial-gradient(circle at 10% 80%, rgba(255,204,128,0.15), transparent 25%),
+    linear-gradient(135deg, #061f4f, #082f6b, #1565c0, #42a5f5);
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 50px;
+  animation: heroUp 1.2s ease-out;
+}
+
+.hero-text-content { text-align: left; }
+
+.small-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+.hero h1 {
+  font-size: 46px;
+  line-height: 1.2;
+  margin: 10px 0 20px;
+}
+
+.hero h1 span { color: #ffcc80; }
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+  margin: 0 0 25px;
+}
+
+.hero-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  border: 7px solid white;
+  box-shadow:
+    0 0 0 12px rgba(255,255,255,0.08),
+    0 20px 50px rgba(0,0,0,0.35);
+  animation: imageFloat 4s ease-in-out infinite;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  margin: 7px 7px 7px 0;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn-primary { background: white; color: #082f6b; }
+.btn-secondary { background: #ffcc80; color: #082f6b; }
+.btn-github { background: #111827; color: white; }
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+  width: calc(100% - 40px);
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 50px 30px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+section h2 {
+  text-align: center;
+  color: #082f6b;
+  font-size: 34px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+section h2:hover { transform: scale(1.03); }
+
+.section-intro {
+  text-align: center;
+  color: #5c6b7f;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.about-profile {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 35px auto 45px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.about-profile-image { display: flex; justify-content: center; }
+
+.about-profile-image img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 7px solid #1565c0;
+  box-shadow:
+    0 0 0 10px rgba(21,101,192,0.08),
+    0 15px 35px rgba(21,101,192,0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-profile-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(21,101,192,0.35);
+}
+
+.about-profile-text h3 {
+  color: #082f6b;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.about-profile-text p { font-size: 17px; margin: 0; }
+
+.about-card {
+  background: #f4f8ff;
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #e2eaf5;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(8,47,107,0.12);
+}
+
+.about-card h3 { color: #1565c0; margin-top: 0; }
+
+/* =========================
+   PROJECTS
+========================= */
+#works { max-width: 1200px; margin: 35px auto; padding: 45px 25px; }
+
+.projects-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.project-card {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e2eaf5;
+  box-shadow: 0 8px 25px rgba(8,47,107,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(8,47,107,0.16);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px 10px;
+}
+
+.project-number {
+  color: #1565c0;
+  font-size: 14px;
+  font-weight: bold;
+  background: #eaf4ff;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.project-icon { font-size: 32px; }
+
+.project-image {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #ffffff;
+}
+
+.project-visual {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eaf4ff, #d5e9ff);
+  overflow: hidden;
+}
+
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.project-visual-3 { background: linear-gradient(135deg, #eef7ff, #dceeff); }
+
+.project-content { padding: 22px; text-align: left; }
+
+.project-content h3 {
+  color: #1565c0;
+  font-size: 22px;
+  margin: 0 0 12px;
+}
+
+.project-content p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.project-tags span {
+  background: #eaf4ff;
+  color: #1565c0;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.project-link {
+  display: inline-block;
+  text-decoration: none;
+  background: #1565c0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.project-link:hover {
+  background: #0d47a1;
+  transform: translateX(4px);
+}
+
+.project-learn-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #eaf4ff;
+  color: #1565c0;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.project-learn-button:hover {
+  background: #d5e9ff;
+  transform: translateY(-2px);
+}
+
+.project-learning {
+  display: none;
+  margin-top: 18px;
+  padding: 18px;
+  background: #f4f8ff;
+  border-left: 4px solid #1565c0;
+  border-radius: 10px;
+}
+
+.project-learning.show { display: block; }
+
+.project-learning h4 {
+  margin: 0 0 12px;
+  color: #082f6b;
+  font-size: 18px;
+}
+
+.project-learning ul { margin: 0; padding-left: 20px; }
+
+.project-learning li {
+  margin-bottom: 9px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* =========================
+   SERVICES
+========================= */
+#services { position: relative; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 35px;
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 330px;
+  padding: 34px 28px 30px;
+  background: linear-gradient(145deg, #ffffff, #f7fbff);
+  border: 1px solid #dce8f5;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(8,47,107,0.07);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg, #082f6b, #1565c0, #42a5f5);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: #90caf9;
+  box-shadow: 0 18px 40px rgba(8,47,107,0.13);
+}
+
+.service-icon {
+  width: 78px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #082f6b, #1565c0, #42a5f5);
+  color: white;
+  font-size: 35px;
+  box-shadow: 0 8px 20px rgba(21,101,192,0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 12px 25px rgba(21,101,192,0.35);
+}
+
+.service-card h3 {
+  margin: 0 0 14px;
+  color: #082f6b;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.service-card p {
+  margin: 0;
+  max-width: 430px;
+  color: #5f6f82;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.service-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 12px 22px;
+  min-width: 155px;
+  background: linear-gradient(135deg, #082f6b, #1565c0);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(8,47,107,0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.service-button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  box-shadow: 0 10px 22px rgba(21,101,192,0.28);
+}
+
+.service-image {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* =========================
+   PRICING (BASIC ONLY)
+========================= */
+#pricing { position: relative; }
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  padding: 42px 36px 36px;
+  background: linear-gradient(145deg, #ffffff, #f7fbff);
+  border: 2px solid #1565c0;
+  border-radius: 24px;
+  box-shadow: 0 15px 38px rgba(21,101,192,0.16);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 5px;
+  background: linear-gradient(90deg, #082f6b, #1565c0, #42a5f5);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: #0d47a1;
+  box-shadow: 0 22px 45px rgba(21,101,192,0.22);
+}
+
+.pricing-card h3 {
+  margin: 0 0 18px;
+  color: #082f6b;
+  font-size: 28px;
+  text-align: center;
+}
+
+.pricing-card .price {
+  margin-bottom: 20px;
+  color: #1565c0;
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.pricing-card .price span {
+  display: block;
+  margin-top: 6px;
+  color: #718096;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pricing-card > p {
+  margin: 0 0 24px;
+  color: #5f6f82;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.pricing-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-card li {
+  color: #34495e;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.pricing-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 15px 22px;
+  width: 100%;
+  background: linear-gradient(135deg, #082f6b, #1565c0);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 6px 15px rgba(8,47,107,0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.pricing-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  box-shadow: 0 10px 22px rgba(21,101,192,0.28);
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-box {
+  max-width: 650px;
+  margin: 30px auto 0;
+  background: #f4f8ff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #e2eaf5;
+  box-shadow: 0 10px 30px rgba(8,47,107,0.08);
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d5dfed;
+  border-radius: 10px;
+  background: white;
+  color: #333;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21,101,192,0.12);
+}
+
+#contact-form textarea { resize: vertical; min-height: 140px; }
+
+#send-button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #1565c0;
+  color: white;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#send-button:hover {
+  background: #0d47a1;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(8,47,107,0.18);
+}
+
+#send-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#form-status {
+  min-height: 24px;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: #082f6b;
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 40px;
+}
+
+footer h3 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  color: #ffcc80;
+}
+
+footer p { margin: 8px 0; line-height: 1.6; }
+
+footer p:last-child {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes pageFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imageFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 800px) {
+  nav a { margin: 0 6px; font-size: 14px; }
+
+  .hero { padding: 60px 25px; }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .hero-text-content { text-align: center; order: 2; }
+  .hero-image-wrapper { order: 1; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .hero h1 { font-size: 36px; }
+  .hero-image { width: 260px; height: 260px; }
+
+  .about-grid,
+  .projects-grid,
+  .services-grid { grid-template-columns: 1fr; }
+
+  .about-profile {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .about-profile-image img { width: 200px; height: 200px; }
+  .about-profile-text h3 { font-size: 25px; }
+
+  #works { margin: 20px 10px; padding: 35px 18px; }
+  .projects-grid { gap: 22px; }
+  .project-image, .project-visual { height: 220px; }
+
+  .services-grid { gap: 22px; }
+  .service-card { min-height: 300px; padding: 32px 24px 28px; }
+
+  .pricing-card { padding: 34px 24px 28px; }
+}
+
+@media (max-width: 450px) {
+  nav { padding: 12px 5px; }
+  nav a { display: inline-block; margin: 4px; font-size: 13px; }
+  .language-btn { margin-top: 7px; }
+
+  .hero { min-height: auto; padding: 50px 15px; }
+  .hero-image { width: 210px; height: 210px; }
+  .small-title { font-size: 25px; }
+  .hero h1 { font-size: 30px; }
+  .hero p { font-size: 16px; }
+
+  section { margin: 20px 10px; padding: 30px 18px; }
+  section h2 { font-size: 28px; }
+
+  #works { margin: 20px 10px; padding: 30px 15px; }
+  .projects-grid { gap: 18px; }
+  .project-image, .project-visual { height: 200px; }
+  .project-content { padding: 18px; }
+
+  .services-grid { gap: 18px; }
+  .service-card { min-height: 290px; padding: 30px 20px 25px; border-radius: 20px; }
+  .service-icon { width: 68px; height: 68px; font-size: 30px; margin-bottom: 17px; }
+  .service-card h3 { font-size: 19px; }
+  .service-card p { font-size: 14px; }
+  .service-button { width: 100%; min-width: 0; }
+
+  .pricing-card { padding: 30px 22px 26px; border-radius: 20px; }
+  .pricing-card h3 { font-size: 24px; }
+  .pricing-card .price { font-size: 34px; }
+  .pricing-card > p { font-size: 14px; }
+  .pricing-card li { font-size: 14px; }
+  .pricing-btn { font-size: 14px; padding: 13px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#home" id="nav-home">Mana</a>
+  <a href="#about" id="nav-about">Waa'ee Koo</a>
+  <a href="#works" id="nav-works">Hojiiwwan Koo</a>
+  <a href="#services" id="nav-services">Tajaajila</a>
+  <a href="#pricing" id="nav-pricing">Gatii</a>
+  <a href="#contact" id="nav-contact">Nu Quunnamaa</a>
+
+  <button class="language-btn" onclick="cycleLanguage()">
+    🌐 <span id="language-text">EN</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-text-content">
+      <div class="small-title" id="hero-small">👋 Baga Nagaan Dhuftan</div>
+
+      <h1 id="hero-title">
+        Ani <span>Addisu</span>, Ogeessa Ijaaraa Marsaariitii (Web Developer) dha.
+      </h1>
+
+      <p id="hero-text">
+        Website bareedaa, saffisaa fi mobile irratti sirriitti hojjetu ijaaruu
+        fi teknooloojii haaraa barachuu irratti hojjechaa jira.
+      </p>
+
+      <a href="#works" class="btn btn-primary" id="works-button">🚀 Hojii Koo Ilaali</a>
+      <a href="#contact" class="btn btn-secondary" id="contact-button">📩 Na Quunnami</a>
+      <a href="https://github.com/addiszed" target="_blank" class="btn btn-github" id="github-button">💻 GitHub Koo</a>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <img src="Ol.jpg" alt="Addis Web Developer" class="hero-image">
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 id="about-title">Waa'ee Koo</h2>
+
+  <p class="section-intro" id="about-intro">
+    Ani <strong>Addisu Zewude</strong>, ogeessa ICT fi <strong>Web Developer</strong> dha.
+    Teknooloojii fi ijaarsa website irratti fedhii guddaa qaba.
+  </p>
+
+  <div class="about-profile">
+    <div class="about-profile-image">
+      <img src="Oliko.jpg" alt="Addisu Web Developer">
+    </div>
+
+    <div class="about-profile-text">
+      <h3 id="about-card-title">Ogummaa Koo</h3>
+      <p id="about-card-text">
+        Ani Addisu, ogeessa ICT fi <strong>Web Developer</strong> dha.
+        <strong>HTML fi CSS</strong> irratti ogummaa gaarii qaba,
+        akkasumas <strong>JavaScript</strong> irratti dandeettii koo cimsaa jira.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <h3 id="skills-title">💻 Ogummaa Koo</h3>
+      <p id="skills-text">
+        HTML fi CSS irratti ogummaa qaba; JavaScript irrattis dandeettii koo
+        cimsachaa jira.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3 id="goal-title">🎯 Kaayyoo Koo</h3>
+      <p id="goal-text">
+        Kaayyoon koo dandeettii Web Development koo guddisuun marsaariitiiwwan
+        qulqullina qaban ijaaruu dha.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3 id="education-title">📚 Barnoota Koo</h3>
+      <p id="education-text">
+        Yeroo hunda waan haaraa barachuu fi dandeettii koo fooyyeessuu irratti
+        hojjechaa jira.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="works">
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-number">01</span>
+        <span class="project-icon">🌐</span>
+      </div>
+
+      <img src="project1.png" alt="Website Dhuunfaa Koo" class="project-image">
+
+      <div class="project-content">
+        <h3 id="project1-title">Website Dhuunfaa Koo</h3>
+        <p id="project1-text">
+          Website dhuunfaa koo kan hojii koo, dandeettii koo fi tajaajilawwan
+          ani kennu agarsiisu.
+        </p>
+
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+
+        <button type="button" class="project-learn-button" id="learning1-button"
+                onclick="toggleLearning('learning1')">📖 Waan Irraa Baradhu</button>
+
+        <div class="project-learning" id="learning1">
+          <h4 id="learning1-title">📚 Waan Irraa Barattu</h4>
+          <ul>
+            <li id="learning1-item1">HTML fayyadamuun caasaa website ijaaruu.</li>
+            <li id="learning1-item2">CSS fayyadamuun website bareechuu fi design gochuu.</li>
+            <li id="learning1-item3">JavaScript fayyadamuun website interactive gochuu.</li>
+            <li id="learning1-item4">Website mobile, tablet fi computer irratti madaqsuu.</li>
+            <li id="learning1-item5">GitHub Pages irratti website publish gochuu.</li>
+          </ul>
+        </div>
+
+        <a href="https://Addiszed.github.io/Addiswebdeveloper.github.io/"
+           target="_blank" class="project-link" id="project1-button">
+          🔗 Pirojektii Ilaali →
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-number">02</span>
+        <span class="project-icon">📱</span>
+      </div>
+
+      <div class="project-visual">
+        <img src="project2.jpg" alt="Responsive Web Design">
+      </div>
+
+      <div class="project-content">
+        <h3 id="project2-title">Responsive Web Design</h3>
+        <p id="project2-text">
+          Website kamiyyuu computer, tablet fi mobile irratti sirriitti hojjetu
+          design fi ijaaruu.
+        </p>
+
+        <div class="project-tags">
+          <span>Responsive</span><span>CSS</span><span>UI Design</span>
+        </div>
+
+        <button type="button" class="project-learn-button" id="learning2-button"
+                onclick="toggleLearning('learning2')">📖 Waan Irraa Baradhu</button>
+
+        <div class="project-learning" id="learning2">
+          <h4 id="learning2-title">📚 Waan Irraa Barattu</h4>
+          <ul>
+            <li id="learning2-item1">Responsive design jechuun maal akka ta'e hubachuu.</li>
+            <li id="learning2-item2">CSS Media Query fayyadamuun screen sizes adda addaa madaqsuu.</li>
+            <li id="learning2-item3">Website mobile, tablet fi computer irratti sirriitti mul'achuu gochuu.</li>
+            <li id="learning2-item4">Suuraa fi elementoota screen size adda addaatti madaqsuu.</li>
+            <li id="learning2-item5">Design qulqulluu fi user-friendly ijaaruu.</li>
+          </ul>
+        </div>
+
+        <a href="#contact" class="project-link" id="project2-button">
+          Ilaali / Na Quunnami →
+        </a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-top">
+        <span class="project-number">03</span>
+        <span class="project-icon">📩</span>
+      </div>
+
+      <div class="project-visual project-visual-3">
+        <img src="project3.jpg" alt="EmailJS Contact Form">
+      </div>
+
+      <div class="project-content">
+        <h3 id="project3-title">Contact Form & EmailJS</h3>
+        <p id="project3-text">
+          Formii quunnamtii website keessatti fayyadamuun ergaa maamiltootaa
+          email irratti fudhachuu.
+        </p>
+
+        <div class="project-tags">
+          <span>JavaScript</span><span>EmailJS</span><span>Form</span>
+        </div>
+
+        <button type="button" class="project-learn-button" id="learning3-button"
+                onclick="toggleLearning('learning3')">📖 Waan Irraa Baradhu</button>
+
+        <div class="project-learning" id="learning3">
+          <h4 id="learning3-title">📚 Waan Irraa Barattu</h4>
+          <ul>
+            <li id="learning3-item1">HTML fayyadamuun contact form ijaaruu.</li>
+            <li id="learning3-item2">Input, email fi message fields qopheessuu.</li>
+            <li id="learning3-item3">JavaScript fayyadamuun form handling gochuu.</li>
+            <li id="learning3-item4">EmailJS waliin website walqunnamsiisuu.</li>
+            <li id="learning3-item5">Ergaa maamiltootaa gara emailitti erguu fi fudhachuu.</li>
+          </ul>
+        </div>
+
+        <a href="#contact" class="project-link" id="project3-button">
+          Ilaali / Na Quunnami →
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 id="services-title">Tajaajilawwan Koo</h2>
+  <p class="section-intro" id="services-intro">
+    Tajaajilawwan website fi teeknooloojii irratti ani kennu.
+  </p>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-image">
+        <img src="olii1.png" alt="Web Development">
+      </div>
+      <h3 id="service1-title">Web Development</h3>
+      <p id="service1-text">
+        Website ammayyaa, saffisaa fi mobile irratti sirriitti hojjetu ijaaruu.
+      </p>
+      <a href="#contact" class="service-button" id="service1-button">📩 Na Quunnami</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-image">
+        <img src="olii2.png" alt="Website Design">
+      </div>
+      <h3 id="service2-title">Website Design</h3>
+      <p id="service2-text">
+        Website bareedaa, salphaa fi nama hawatu design gochuu.
+      </p>
+      <a href="#contact" class="service-button" id="service2-button">📩 Na Quunnami</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3 id="service3-title">Website Maintenance</h3>
+      <p id="service3-text">
+        Website keessatti fooyya'iinsa, sirreeffama fi update barbaachisu gochuu.
+      </p>
+      <a href="#contact" class="service-button" id="service3-button">📩 Na Quunnami</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3 id="service4-title">Technology & AI</h3>
+      <p id="service4-text">
+        Technology fi AI fayyadamuun hojiiwwan dijitaalaa fooyyeessuu.
+      </p>
+      <a href="#contact" class="service-button" id="service4-button">📩 Na Quunnami</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING (BASIC ONLY) -->
+<section id="pricing">
+  <h2 id="pricing-title">Gatii Tajaajilaa</h2>
+  <p class="section-intro" id="pricing-intro">
+    Tajaajila ani kennuuf gatii armaan gadii ilaali.
+  </p>
+
+  <div class="pricing-grid">
+
+    <div class="pricing-card">
+      <h3 id="basic-title">Basic</h3>
+      <div class="price">5,000 <span id="basic-price">BIRR irraa eegalee</span></div>
+      <p id="basic-description">
+        Website salphaa, qulqulluu fi mobile irratti sirriitti hojjetu,
+        namoota dhuunfaa ykn hojii xixiqqaaf mijatu.
+      </p>
+      <ul>
+        <li id="basic-feature1">✓ Fuula website salphaa</li>
+        <li id="basic-feature2">✓ Responsive Design</li>
+        <li id="basic-feature3">✓ Design qulqulluu</li>
+        <li id="basic-feature4">✓ Contact Form</li>
+      </ul>
+      <a href="#contact" class="pricing-btn" id="basic-button">📩 Tajaajila Kana Ajaji</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 id="contact-title">Nu Quunnamaa</h2>
+  <p class="section-intro" id="contact-intro">
+    Yoo waa'ee hojii koo ykn tajaajila koo na quunnamuu barbaadde,
+    ergaa kee asitti naaf ergi.
+  </p>
+
+  <div class="contact-box">
+    <form id="contact-form">
+      <input type="text" id="name-input" name="name" placeholder="Maqaa kee" required>
+      <input type="email" id="email-input" name="email" placeholder="Email kee" required>
+      <textarea id="message-input" name="message" rows="6"
+                placeholder="Ergaa kee barreessi" required></textarea>
+      <button type="submit" id="send-button">📩 Ergaa Ergi</button>
+      <div id="form-status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h3 id="footer-title">Addis Web Developer</h3>
+  <p id="footer-text">
+    Website bareedaa fi teknooloojii ammayyaa ijaaruu irratti hojjechaa jira.
+  </p>
+  <p>© 2026 Addis Web Developer. All Rights Reserved.</p>
+</footer>
+
+<script>
+/* =========================
+   EMAILJS
+========================= */
+emailjs.init({ publicKey: "A5qi6C-xNssmcgEda" });
+
+const contactForm = document.getElementById("contact-form");
+const sendButton = document.getElementById("send-button");
+const formStatus = document.getElementById("form-status");
+
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  sendButton.disabled = true;
+  sendButton.textContent = "⏳";
+  formStatus.textContent = "";
+
+  emailjs.sendForm("service_l9iavpf", "template_rl3r47h", this)
+    .then(function () {
+      formStatus.textContent = LANG[lang].sendSuccess;
+      formStatus.style.color = "green";
+
+      contactForm.reset();
+      sendButton.disabled = false;
+      sendButton.textContent = LANG[lang].sendButton;
+
+      setTimeout(() => { formStatus.textContent = ""; }, 5000);
+    })
+    .catch(function (error) {
+      console.error("EmailJS Error:", error);
+      formStatus.textContent = LANG[lang].sendError;
+      formStatus.style.color = "red";
+
+      sendButton.disabled = false;
+      sendButton.textContent = LANG[lang].sendButton;
+    });
+});
+
+/* =========================
+   PROJECT LEARNING TOGGLE
+========================= */
+function toggleLearning(id) {
+  const section = document.getElementById(id);
+  if (section) section.classList.toggle("show");
+}
+
+/* =========================
+   3-LANGUAGE SYSTEM
+========================= */
+const languages = ["om", "en", "am"];
+let currentIndex = 0;
+let lang = "om";
+
+const LANG = {
+  /* ---------- AFAAN OROMOO ---------- */
+  om: {
+    "nav-home": "Mana",
+    "nav-about": "Waa'ee Koo",
+    "nav-works": "Hojiiwwan Koo",
+    "nav-services": "Tajaajila",
+    "nav-pricing": "Gatii",
+    "nav-contact": "Nu Quunnamaa",
+    "language-text": "EN",
+
+    "hero-small": "👋 Baga Nagaan Dhuftan",
+    "hero-title": 'Ani <span>Addisu</span>, Ogeessa Ijaaraa Marsaariitii (Web Developer) dha.',
+    "hero-text":
+      "Website bareedaa, saffisaa fi mobile irratti sirriitti hojjetu ijaaruu fi teknooloojii haaraa barachuu irratti hojjechaa jira.",
+    "works-button": "🚀 Hojii Koo Ilaali",
+    "contact-button": "📩 Na Quunnami",
+    "github-button": "💻 GitHub Koo",
+
+    "about-title": "Waa'ee Koo",
+    "about-intro":
+      "Ani Addisu Zewude, ogeessa ICT fi Web Developer dha. Teknooloojii fi ijaarsa website irratti fedhii guddaa qaba.",
+    "about-card-title": "Ogummaa Koo",
+    "about-card-text":
+      "Ani Addisu, ogeessa ICT fi Web Developer dha. HTML fi CSS irratti ogummaa gaarii qaba, akkasumas JavaScript irratti dandeettii koo cimsaa jira.",
+    "skills-title": "💻 Ogummaa Koo",
+    "skills-text":
+      "HTML fi CSS irratti ogummaa qaba; JavaScript irrattis dandeettii koo cimsachaa jira.",
+    "goal-title": "🎯 Kaayyoo Koo",
+    "goal-text":
+      "Kaayyoon koo dandeettii Web Development koo guddisuun marsaariitiiwwan qulqullina qaban ijaaruu dha.",
+    "education-title": "📚 Barnoota Koo",
+    "education-text":
+      "Yeroo hunda waan haaraa barachuu fi dandeettii koo fooyyeessuu irratti hojjechaa jira.",
+
+    "project1-title": "Website Dhuunfaa Koo",
+    "project1-text":
+      "Website dhuunfaa koo kan hojii koo, dandeettii koo fi tajaajilawwan ani kennu agarsiisu.",
+    "project1-button": "🔗 Pirojektii Ilaali →",
+    "project2-title": "Responsive Web Design",
+    "project2-text":
+      "Website kamiyyuu computer, tablet fi mobile irratti sirriitti hojjetu design fi ijaaruu.",
+    "project2-button": "Ilaali / Na Quunnami →",
+    "project3-title": "Contact Form & EmailJS",
+    "project3-text":
+      "Formii quunnamtii website keessatti fayyadamuun ergaa maamiltootaa email irratti fudhachuu.",
+    "project3-button": "Ilaali / Na Quunnami →",
+
+    "learning1-button": "📖 Waan Irraa Baradhu",
+    "learning2-button": "📖 Waan Irraa Baradhu",
+    "learning3-button": "📖 Waan Irraa Baradhu",
+    "learning1-title": "📚 Waan Irraa Barattu",
+    "learning2-title": "📚 Waan Irraa Barattu",
+    "learning3-title": "📚 Waan Irraa Barattu",
+    "learning1-item1": "HTML fayyadamuun caasaa website ijaaruu.",
+    "learning1-item2": "CSS fayyadamuun website bareechuu fi design gochuu.",
+    "learning1-item3": "JavaScript fayyadamuun website interactive gochuu.",
+    "learning1-item4": "Website mobile, tablet fi computer irratti madaqsuu.",
+    "learning1-item5": "GitHub Pages irratti website publish gochuu.",
+    "learning2-item1": "Responsive design jechuun maal akka ta'e hubachuu.",
+    "learning2-item2": "CSS Media Query fayyadamuun screen sizes adda addaa madaqsuu.",
+    "learning2-item3": "Website mobile, tablet fi computer irratti sirriitti mul'achuu gochuu.",
+    "learning2-item4": "Suuraa fi elementoota screen size adda addaatti madaqsuu.",
+    "learning2-item5": "Design qulqulluu fi user-friendly ijaaruu.",
+    "learning3-item1": "HTML fayyadamuun contact form ijaaruu.",
+    "learning3-item2": "Input, email fi message fields qopheessuu.",
+    "learning3-item3": "JavaScript fayyadamuun form handling gochuu.",
+    "learning3-item4": "EmailJS waliin website walqunnamsiisuu.",
+    "learning3-item5": "Ergaa maamiltootaa gara emailitti erguu fi fudhachuu.",
+
+    "services-title": "Tajaajilawwan Koo",
+    "services-intro": "Tajaajilawwan website fi teeknooloojii irratti ani kennu.",
+    "service1-title": "Web Development",
+    "service1-text": "Website ammayyaa, saffisaa fi mobile irratti sirriitti hojjetu ijaaruu.",
+    "service2-title": "Website Design",
+    "service2-text": "Website bareedaa, salphaa fi nama hawatu design gochuu.",
+    "service3-title": "Website Maintenance",
+    "service3-text": "Website keessatti fooyya'iinsa, sirreeffama fi update barbaachisu gochuu.",
+    "service4-title": "Technology & AI",
+    "service4-text": "Technology fi AI fayyadamuun hojiiwwan dijitaalaa fooyyeessuu.",
+    "service1-button": "📩 Na Quunnami",
+    "service2-button": "📩 Na Quunnami",
+    "service3-button": "📩 Na Quunnami",
+    "service4-button": "📩 Na Quunnami",
+
+    "pricing-title": "Gatii Tajaajilaa",
+    "pricing-intro": "Tajaajila ani kennuuf gatii armaan gadii ilaali.",
+    "basic-title": "Basic",
+    "basic-price": "BIRR irraa eegalee",
+    "basic-description":
+      "Website salphaa, qulqulluu fi mobile irratti sirriitti hojjetu, namoota dhuunfaa ykn hojii xixiqqaaf mijatu.",
+    "basic-feature1": "✓ Fuula website salphaa",
+    "basic-feature2": "✓ Responsive Design",
+    "basic-feature3": "✓ Design qulqulluu",
+    "basic-feature4": "✓ Contact Form",
+    "basic-button": "📩 Tajaajila Kana Ajaji",
+
+    "contact-title": "Nu Quunnamaa",
+    "contact-intro":
+      "Yoo waa'ee hojii koo ykn tajaajila koo na quunnamuu barbaadde, ergaa kee asitti naaf ergi.",
+    "footer-title": "Addis Web Developer",
+    "footer-text":
+      "Website bareedaa fi teknooloojii ammayyaa ijaaruu irratti hojjechaa jira.",
+
+    "ph-name": "Maqaa kee",
+    "ph-email": "Email kee",
+    "ph-message": "Ergaa kee barreessi",
+    "sendButton": "📩 Ergaa Ergi",
+    "sendSuccess": "✅ Ergaan kee milkaa'inaan ergameera. Galatoomi!",
+    "sendError": "❌ Ergaa erguun hin milkoofne. Mee irra deebi'ii yaali."
+  },
+
+  /* ---------- ENGLISH ---------- */
+  en: {
+    "nav-home": "Home",
+    "nav-about": "About Me",
+    "nav-works": "My Projects",
+    "nav-services": "Services",
+    "nav-pricing": "Pricing",
+    "nav-contact": "Contact Me",
+    "language-text": "አማ",
+
+    "hero-small": "👋 Welcome",
+    "hero-title": 'I am <span>Addisu</span>, a Web Developer.',
+    "hero-text":
+      "I am working on building beautiful, fast and responsive websites while learning new technologies.",
+    "works-button": "🚀 View My Projects",
+    "contact-button": "📩 Contact Me",
+    "github-button": "💻 My GitHub",
+
+    "about-title": "About Me",
+    "about-intro":
+      "I am Addisu Zewude, an ICT professional and Web Developer. I have a strong passion for technology and web development.",
+    "about-card-title": "My Expertise",
+    "about-card-text":
+      "I am Addisu, an ICT professional and Web Developer. I have good skills in HTML and CSS and I am strengthening my JavaScript skills.",
+    "skills-title": "💻 My Skills",
+    "skills-text":
+      "I have skills in HTML and CSS, and I am strengthening my JavaScript skills.",
+    "goal-title": "🎯 My Goal",
+    "goal-text":
+      "My goal is to improve my Web Development skills and build high-quality websites.",
+    "education-title": "📚 My Education",
+    "education-text":
+      "I am always learning new things and working to improve my skills.",
+
+    "project1-title": "My Personal Website",
+    "project1-text":
+      "My personal website that showcases my skills, projects and services.",
+    "project1-button": "🔗 View Project →",
+    "project2-title": "Responsive Web Design",
+    "project2-text":
+      "Creating websites that work properly on mobile, tablet and computer.",
+    "project2-button": "View / Contact Me →",
+    "project3-title": "EmailJS Contact Form",
+    "project3-text":
+      "A contact form that sends messages from the website directly to email.",
+    "project3-button": "View / Contact Me →",
+
+    "learning1-button": "📖 What You Will Learn",
+    "learning2-button": "📖 What You Will Learn",
+    "learning3-button": "📖 What You Will Learn",
+    "learning1-title": "📚 What You Will Learn",
+    "learning2-title": "📚 What You Will Learn",
+    "learning3-title": "📚 What You Will Learn",
+    "learning1-item1": "Building website structure using HTML.",
+    "learning1-item2": "Styling and designing websites using CSS.",
+    "learning1-item3": "Making websites interactive using JavaScript.",
+    "learning1-item4": "Making websites responsive on mobile, tablet and computer.",
+    "learning1-item5": "Publishing websites using GitHub Pages.",
+    "learning2-item1": "Understanding what responsive design means.",
+    "learning2-item2": "Using CSS Media Query to adapt to different screen sizes.",
+    "learning2-item3": "Making websites display properly on mobile, tablet and computer.",
+    "learning2-item4": "Adapting images and elements to different screen sizes.",
+    "learning2-item5": "Building clean and user-friendly designs.",
+    "learning3-item1": "Building a contact form using HTML.",
+    "learning3-item2": "Creating input, email and message fields.",
+    "learning3-item3": "Handling forms using JavaScript.",
+    "learning3-item4": "Connecting a website with EmailJS.",
+    "learning3-item5": "Sending and receiving customer messages through email.",
+
+    "services-title": "My Services",
+    "services-intro": "Services I provide and areas I am working on.",
+    "service1-title": "Web Development",
+    "service1-text": "Building fast, clean and responsive websites.",
+    "service2-title": "Website Design",
+    "service2-text": "Creating beautiful and user-friendly website designs.",
+    "service3-title": "Website Maintenance",
+    "service3-text": "Updating, fixing and improving websites.",
+    "service4-title": "Technology & AI",
+    "service4-text": "Using technology and AI to improve digital work.",
+    "service1-button": "📩 Contact Me",
+    "service2-button": "📩 Contact Me",
+    "service3-button": "📩 Contact Me",
+    "service4-button": "📩 Contact Me",
+
+    "pricing-title": "Service Pricing",
+    "pricing-intro": "Here is the starting price for the service I provide.",
+    "basic-title": "Basic",
+    "basic-price": "BIRR starting from",
+    "basic-description":
+      "A simple, clean and responsive website suitable for individuals or small businesses.",
+    "basic-feature1": "✓ Simple website page",
+    "basic-feature2": "✓ Responsive Design",
+    "basic-feature3": "✓ Clean Design",
+    "basic-feature4": "✓ Contact Form",
+    "basic-button": "📩 Order This Service",
+
+    "contact-title": "Contact Me",
+    "contact-intro":
+      "If you would like to contact me about my work or services, send me a message here.",
+    "footer-title": "Addis Web Developer",
+    "footer-text":
+      "Working on building beautiful websites and modern technology.",
+
+    "ph-name": "Your name",
+    "ph-email": "Your email",
+    "ph-message": "Write your message",
+    "sendButton": "📩 Send Message",
+    "sendSuccess": "✅ Your message has been sent successfully. Thank you!",
+    "sendError": "❌ Failed to send the message. Please try again."
+  },
+
+  /* ---------- አማርኛ ---------- */
+  am: {
+    "nav-home": "መግቢያ",
+    "nav-about": "ስለ እኔ",
+    "nav-works": "ስራዎቼ",
+    "nav-services": "አገልግሎቶች",
+    "nav-pricing": "ዋጋ",
+    "nav-contact": "አግኙኝ",
+    "language-text": "OM",
+
+    "hero-small": "👋 እንኳን በደህና መጡ",
+    "hero-title": 'እኔ <span>አዲሱ</span>፣ የድረ-ገጽ ገንቢ (Web Developer) ነኝ።',
+    "hero-text":
+      "ቆንጆ፣ ፈጣን እና በሞባይል ላይ በደንብ የሚሰሩ ድረ-ገጾችን በመገንባት አዲስ ቴክኖሎጂዎችን በመማር ላይ እገኛለሁ።",
+    "works-button": "🚀 ስራዎቼን ይመልከቱ",
+    "contact-button": "📩 አግኙኝ",
+    "github-button": "💻 GitHub",
+
+    "about-title": "ስለ እኔ",
+    "about-intro":
+      "እኔ አዲሱ ዘውዴ፣ የ ICT ባለሙያ እና የድረ-ገጽ ገንቢ ነኝ። ለቴክኖሎጂ እና ለድረ-ገጽ ግንባታ ትልቅ ፍላጎት አለኝ።",
+    "about-card-title": "የእኔ ክህሎት",
+    "about-card-text":
+      "እኔ አዲሱ ነኝ፣ የ ICT ባለሙያ እና የድረ-ገጽ ገንቢ። በ HTML እና CSS ጥሩ ክህሎት አለኝ፣ እንዲሁም የ JavaScript ክህሎቴን በማጠናከር ላይ ነኝ።",
+    "skills-title": "💻 የእኔ ክህሎት",
+    "skills-text":
+      "በ HTML እና CSS ክህሎት አለኝ፤ የ JavaScript ክህሎቴንም በማጠናከር ላይ ነኝ።",
+    "goal-title": "🎯 ግቤ",
+    "goal-text":
+      "ግቤ የ Web Development ክህሎቴን በማሻሻል ከፍተኛ ጥራት ያላቸውን ድረ-ገጾች መገንባት ነው።",
+    "education-title": "📚 ትምህርቴ",
+    "education-text":
+      "ሁልጊዜ አዲስ ነገር እየተማርኩ እና ክህሎቴን በማሻሻል ላይ ነኝ።",
+
+    "project1-title": "የግል ድረ-ገጼ",
+    "project1-text":
+      "ክህሎቴን፣ ስራዎቼን እና አገልግሎቶቼን የሚያሳይ የግል ድረ-ገጼ።",
+    "project1-button": "🔗 ፕሮጀክቱን ይመልከቱ →",
+    "project2-title": "ምላሽ ሰጪ የድረ-ገጽ ንድፍ",
+    "project2-text":
+      "በሞባይል፣ በታብሌት እና በኮምፒውተር ላይ በትክክል የሚሰሩ ድረ-ገጾችን መፍጠር።",
+    "project2-button": "ይመልከቱ / አግኙኝ →",
+    "project3-title": "Contact Form & EmailJS",
+    "project3-text":
+      "ከድረ-ገጹ ላይ መልዕክቶችን በቀጥታ ወደ ኢሜይል የሚልክ የመገኛ ቅጽ።",
+    "project3-button": "ይመልከቱ / አግኙኝ →",
+
+    "learning1-button": "📖 ምን ይማራሉ",
+    "learning2-button": "📖 ምን ይማራሉ",
+    "learning3-button": "📖 ምን ይማራሉ",
+    "learning1-title": "📚 ምን ይማራሉ",
+    "learning2-title": "📚 ምን ይማራሉ",
+    "learning3-title": "📚 ምን ይማራሉ",
+    "learning1-item1": "HTML በመጠቀም የድረ-ገጽ አሰራር መገንባት።",
+    "learning1-item2": "CSS በመጠቀም ድረ-ገጾችን ማስዋብ እና መንደፍ።",
+    "learning1-item3": "JavaScript በመጠቀም ድረ-ገጾችን በይነተገናኝ ማድረግ።",
+    "learning1-item4": "ድረ-ገጾችን በሞባይል፣ በታብሌት እና በኮምፒውተር ላይ ማስተካከል።",
+    "learning1-item5": "GitHub Pages በመጠቀም ድረ-ገጾችን ማተም።",
+    "learning2-item1": "Responsive Design ምን ማለት እንደሆነ መረዳት።",
+    "learning2-item2": "CSS Media Query በመጠቀም የተለያዩ የስክሪን መጠኖችን ማስተካከል።",
+    "learning2-item3": "ድረ-ገጾች በሞባይል፣ በታብሌት እና በኮምፒውተር ላይ በትክክል እንዲታዩ ማድረግ።",
+    "learning2-item4": "ምስሎችን እና ክፍሎችን ለተለያዩ የስክሪን መጠኖች ማስተካከል።",
+    "learning2-item5": "ንጹህ እና ለተጠቃሚ ተስማሚ ንድፎችን መገንባት።",
+    "learning3-item1": "HTML በመጠቀም የመገኛ ቅጽ መገንባት።",
+    "learning3-item2": "Input፣ Email እና Message መስኮችን መፍጠር።",
+    "learning3-item3": "JavaScript በመጠቀም ቅጾችን ማስተዳደር።",
+    "learning3-item4": "ድረ-ገጹን ከ EmailJS ጋር ማገናኘት።",
+    "learning3-item5": "የደንበኞችን መልዕክቶች በኢሜይል መላክ እና መቀበል።",
+
+    "services-title": "አገልግሎቶቼ",
+    "services-intro": "የምሰጣቸው የድረ-ገጽ እና የቴክኖሎጂ አገልግሎቶች።",
+    "service1-title": "Web Development",
+    "service1-text": "ዘመናዊ፣ ፈጣን እና በሞባይል ላይ በደንብ የሚሰራ ድረ-ገጽ መገንባት።",
+    "service2-title": "Website Design",
+    "service2-text": "ቆንጆ፣ ቀላል እና ማራኪ የድረ-ገጽ ንድፍ መፍጠር።",
+    "service3-title": "Website Maintenance",
+    "service3-text": "ድረ-ገጾችን ማሻሻል፣ ማስተካከል እና ማዘመን።",
+    "service4-title": "Technology & AI",
+    "service4-text": "ቴክኖሎጂ እና AI በመጠቀም ዲጂታል ስራዎችን ማሻሻል።",
+    "service1-button": "📩 አግኙኝ",
+    "service2-button": "📩 አግኙኝ",
+    "service3-button": "📩 አግኙኝ",
+    "service4-button": "📩 አግኙኝ",
+
+    "pricing-title": "የአገልግሎት ዋጋ",
+    "pricing-intro": "የምሰጠው አገልግሎት መነሻ ዋጋ እነሆ።",
+    "basic-title": "መሰረታዊ",
+    "basic-price": "ብር ከ... ጀምሮ",
+    "basic-description":
+      "ለግለሰቦች ወይም ለአነስተኛ ንግዶች ተስማሚ የሆነ ቀላል፣ ንጹህ እና ምላሽ ሰጪ ድረ-ገጽ።",
+    "basic-feature1": "✓ ቀላል የድረ-ገጽ ገጽ",
+    "basic-feature2": "✓ ምላሽ ሰጪ ንድፍ",
+    "basic-feature3": "✓ ንጹህ ንድፍ",
+    "basic-feature4": "✓ የመገኛ ቅጽ",
+    "basic-button": "📩 ይህን አገልግሎት ያዙ",
+
+    "contact-title": "አግኙኝ",
+    "contact-intro":
+      "ስለ ስራዬ ወይም ስለ አገልግሎቶቼ ልታገኙኝ ከፈለጉ፣ መልዕክትዎን እዚህ ይላኩልኝ።",
+    "footer-title": "Addis Web Developer",
+    "footer-text":
+      "ቆንጆ ድረ-ገጾችን እና ዘመናዊ ቴክኖሎጂን በመገንባት ላይ እገኛለሁ።",
+
+    "ph-name": "ስምዎ",
+    "ph-email": "ኢሜይልዎ",
+    "ph-message": "መልዕክትዎን ይጻፉ",
+    "sendButton": "📩 መልዕክት ላክ",
+    "sendSuccess": "✅ መልዕክትዎ በተሳካ ሁኔታ ተልኳል። አመሰግናለሁ!",
+    "sendError": "❌ መልዕክት መላክ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+  }
+};
+
+/* =========================
+   APPLY LANGUAGE
+========================= */
+function applyLanguage(code) {
+  lang = code;
+  document.documentElement.lang = code;
+  const dict = LANG[code];
+
+  Object.keys(dict).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (id === "hero-title") {
+      el.innerHTML = dict[id];
+    } else {
+      el.textContent = dict[id];
+    }
+  });
+
+  const nameEl = document.getElementById("name-input");
+  const emailEl = document.getElementById("email-input");
+  const msgEl = document.getElementById("message-input");
+
+  if (nameEl) nameEl.placeholder = dict["ph-name"];
+  if (emailEl) emailEl.placeholder = dict["ph-email"];
+  if (msgEl) msgEl.placeholder = dict["ph-message"];
+
+  if (sendButton) sendButton.textContent = dict["sendButton"];
+
+  localStorage.setItem("preferredLang", code);
+}
+
+/* =========================
+   CYCLE: Oromo → English → Amharic → Oromo
+========================= */
+function cycleLanguage() {
+  currentIndex = (currentIndex + 1) % languages.length;
+  applyLanguage(languages[currentIndex]);
+}
+
+/* =========================
+   LOAD SAVED LANGUAGE ON START
+========================= */
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = localStorage.getItem("preferredLang");
+  if (saved && languages.includes(saved)) {
+    currentIndex = languages.indexOf(saved);
+    applyLanguage(saved);
+  } else {
+    applyLanguage("om");
+  }
+});
+</script>
+
+</body>
+</html>
