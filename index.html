@@ -1190,7 +1190,7 @@ footer p:last-child {
 /* =========================
    EMAILJS
 ========================= */
-emailjs.init({ publicKey: "A5qi6C-xNssmcgEda" });
+emailjs.init({ publicKey: "wOTz6Y-asqFrT5b6O" });
 
 const contactForm = document.getElementById("contact-form");
 const sendButton = document.getElementById("send-button");
@@ -1203,7 +1203,7 @@ contactForm.addEventListener("submit", function (event) {
   sendButton.textContent = "⏳";
   formStatus.textContent = "";
 
-  emailjs.sendForm("service_l9iavpf", "template_rl3r47h", this)
+  emailjs.sendForm("service_zy0qr9c", "template_io35bnp", this)
     .then(function () {
       formStatus.textContent = LANG[lang].sendSuccess;
       formStatus.style.color = "green";
